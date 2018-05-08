@@ -1,19 +1,17 @@
 ###############################################
-# Dockerfile to create a wiremock server using
-# local wiremock configuration files
+# Example using the tessatech/wiremock-server 
+# image to deploy a mock server
 ###############################################
 
-FROM maven:3-jdk-9 as build
+FROM tessatech/wiremock-server:latest as build
 
 MAINTAINER TessaTech LLC
 
-# Copy project POM
-COPY ["pom.xml", "/wiremock/"]
+# Copy mappings and __files directory to build
+COPY ["mappings", "/wiremock/mappings/"]
+COPY ["__files", "/wiremock/__files/"]
 
-# Execute mvn dependency:copy-dependencies to download latest version of jar
-RUN ["mvn", "dependency:copy-dependencies", "-DoutputDirectory=/wiremock/."]
-
-# Create second stage of build using alpine image
+# 
 FROM openjdk:alpine
 COPY --from=build /wiremock /wiremock
 
@@ -25,4 +23,5 @@ WORKDIR /wiremock
 
 # Set default entrypoint
 ENTRYPOINT ["java", "-jar", "/wiremock/wiremock.jar"]
+
 
