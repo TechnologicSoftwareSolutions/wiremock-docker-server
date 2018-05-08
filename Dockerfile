@@ -11,17 +11,20 @@ MAINTAINER TessaTech LLC
 COPY ["pom.xml", "."]
 
 # Execute mvn dependency:copy-dependencies to download latest version of jar
-RUN ["mvn", "dependency:copy-dependencies", "-DoutputDirectory=/wiremock/."]
+RUN ["mvn", "dependency:copy-dependencies", "-DoutputDirectory=."]
+
+RUN ["mkdir", "/wiremock"]
+RUN find / -name 'wiremock-standalone*.jar' -exec cp {} /wiremock/wiremock.jar \;
 
 # Create second stage of build using alpine image
-FROM openjdk:alpine
-COPY --from=build /wiremock /wiremock
+#FROM openjdk:alpine
+#COPY --from=build /wiremock /wiremock
 
 # Expose the Default Wiremock Port
-EXPOSE 8080
+#EXPOSE 8080
 
 # Change Working Directory to wiremock folder
-WORKDIR /wiremock
+#WORKDIR /wiremock
 
 # Set default entrypoint
 ENTRYPOINT ["java", "-jar", "/wiremock/wiremock.jar"]
