@@ -8,7 +8,7 @@ FROM maven:3-jdk-9 as build
 MAINTAINER TessaTech LLC
 
 # Copy project POM
-COPY ["pom.xml"]
+COPY ["pom.xml", "."]
 
 # Execute mvn dependency:copy-dependencies to download latest version of jar
 RUN ["mvn", "dependency:copy-dependencies", "-DoutputDirectory=/wiremock/."]
