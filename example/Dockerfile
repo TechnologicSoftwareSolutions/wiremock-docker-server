@@ -11,7 +11,7 @@ MAINTAINER TessaTech LLC
 COPY ["mappings", "/wiremock/mappings/"]
 COPY ["__files", "/wiremock/__files/"]
 
-# 
+# Create second stage of build using alpine image
 FROM openjdk:alpine
 COPY --from=build /wiremock /wiremock
 
