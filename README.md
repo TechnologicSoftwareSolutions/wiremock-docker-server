@@ -23,11 +23,11 @@ To build a new server extending our base image:
 2. Create two folders inside the parent directory, '__files' and 'mappings'
 3. Create your WireMock stubs and files as necessary
 4. Place the following into a docker file alongside your parent
-  ```
-  FROM tessatech/wiremock-server:latest as build
-  
-  COPY ["mock", "/wiremock/"]
-  ```
+   ```
+   FROM tessatech/wiremock-server:latest as build
+   
+   COPY ["mock", "/wiremock/"]
+   ```
 5. Build image
    ```
    docker build .
