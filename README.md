@@ -8,9 +8,9 @@ A minimal docker image for deploying a standalone WireMock server.
 
 Motivation
 ----------
-Internally, we are using this base image to simplify the CD of our mocks ervices. 
+We created this base image to simplify the deployment of our mock services during our CD pipeline.
 
-Specifically, we are using this as a base image to create versioned mocks of our services. During CD build of a service, we copy out the mock's json mapping files and build a docker image for that mock, using this base image. That image then gets tagged against the build number and stored in Nexus, where it can be easily pulled for deployment, testing, and rollbacks.
+Internally, we use this as a base image to create versioned mocks of our services. During CD build of a service, we copy out the mock's json mapping files and build a docker image for that mock. That image then gets tagged against the build number and stored in Nexus, where it can be easily pulled for deployment, testing, and rollbacks.
 
 How to Use
 -----------
