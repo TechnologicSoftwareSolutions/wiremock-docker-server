@@ -38,5 +38,5 @@ To build a new server extending our base image:
  
 Questions and Comments
 ----------------------
-If you have a question or comment, please send an email to support@tessatech.org
+If you have a question or comment, please send an email to support@technologi.cc
 
